@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IPController;
 use App\Models\URL;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,8 @@ Route::middleware([
     })->name('dashboard');
     Route::resource('url', App\Http\Controllers\URLController::class);
     Route::get('url/{code}', [App\Http\Controllers\URLController::class, 'show']);
+    Route::resource('ip', IPController::class);
+    Route::post('ip', [IPController::class, 'query'])->name('ip.query');
 });
 
 Route::get('{any?}', function ($any = null) {

@@ -22,6 +22,17 @@
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <form class="ms-3 relative" action="{{ route('ip.query')}}" method="POST">
+                    <input  type="text" class="border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Enter IP" id="url" name="ip"
+                            value="{{ Request::ip() }}"
+                            required>
+                    <button class="inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150"
+                            type="submit">
+                        查詢
+                    </button>
+                    @csrf
+                </form>
+
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ms-3 relative">
